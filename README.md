@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎲 Dice Shake App
 
 App Flutter semplice per lanciare dadi virtuali con lo shake del dispositivo, perfetta per giochi da tavolo!
@@ -77,3 +78,6 @@ Progetto didattico - uso libero
 ---
 
 Creato con ❤️ usando Flutter
+=======
+# diceshakeapp
+>>>>>>> e87e6ebe32959f5893d5c24193b1ab27ce32c280
