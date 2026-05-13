@@ -1,75 +1,72 @@
-# 🎲 Dice Shake App
+Dice Shake App
 
-App Flutter semplice per lanciare dadi virtuali con lo shake del dispositivo, perfetta per giochi da tavolo!
+Dice Shake App è un'applicazione mobile sviluppata con Flutter che consente di simulare il lancio di dadi virtuali utilizzando sia input manuale che interazione fisica tramite accelerometro. L'app è progettata per offrire un'esperienza fluida, moderna e realistica, ed è adatta a giochi da tavolo digitali o utilizzo didattico.
 
-## Funzionalità
+Features
+Rilevamento dello scuotimento del dispositivo (shake detection)
+Lancio manuale dei dadi tramite pulsante
+Supporto fino a 3 dadi simultanei
+Configurazione dinamica del numero di facce per ciascun dado (D1–D10)
+Animazioni fluide durante il lancio
+Calcolo automatico del totale
+Persistenza locale dei risultati
+Visualizzazione della cronologia dei lanci
+Possibilità di cancellare la cronologia
+Tech Stack
+Flutter – Framework UI cross-platform
+sensors_plus – Accesso ai sensori del dispositivo
+sqflite – Database SQLite locale
+path_provider – Gestione del file system
+intl – Formattazione date e orari
+How It Works
 
-✨ **Shake Detection**: Scuoti il dispositivo per lanciare automaticamente i dadi
-🎲 **1 o 2 Dadi**: Scegli tra lanciare 1 o 2 dadi
-🎨 **Animazioni Fluide**: Rotazione e cambio rapido dei valori durante il lancio
-📱 **Lancio Manuale**: Pulsante per lanciare senza shake
-🎯 **Calcolo Totale**: Visualizzazione automatica della somma
+L'app utilizza i dati dell'accelerometro per rilevare movimenti del dispositivo. Quando l'accelerazione supera una soglia definita, viene attivato automaticamente il lancio dei dadi.
 
-## Tecnologie Utilizzate
+Durante il lancio:
 
-- **Flutter**: Framework UI cross-platform
-- **sensors_plus**: Pacchetto per accedere all'accelerometro del dispositivo
-- **Material Design 3**: UI moderna e pulita
+I valori vengono aggiornati dinamicamente per simulare il movimento reale
+Viene eseguita un'animazione di rotazione
+Al termine, viene calcolato il totale e salvato nel database
 
-## Come Funziona
+Un sistema di cooldown previene attivazioni multiple ravvicinate.
 
-L'app utilizza l'accelerometro per rilevare quando il dispositivo viene scosso:
+Data Persistence
 
-1. **Rilevazione Shake**: Monitora l'accelerazione su tutti e tre gli assi (x, y, z)
-2. **Soglia**: Quando l'accelerazione supera 15.0 m/s², viene rilevato lo shake
-3. **Cooldown**: Un timer di 1 secondo previene lanci multipli accidentali
-4. **Animazione**: I dadi ruotano e cambiano valore per 500ms
-5. **Risultato**: Viene mostrato il valore finale e il totale
+I risultati dei lanci vengono salvati in un database locale SQLite.
 
-## Installazione
+Per ogni lancio vengono memorizzati:
 
-1. Assicurati di avere Flutter installato
-2. Clona o copia i file del progetto
-3. Esegui:
+valori dei dadi (formato JSON)
+totale
+configurazione delle facce
+timestamp
 
-```bash
+I dati sono successivamente recuperati per la visualizzazione della cronologia.
+
+Project Structure
+dice_shake_app/
+├── lib/
+│   └── main.dart          # Entry point e logica principale
+├── pubspec.yaml           # Dipendenze
+└── README.md              # Documentazione
+Installation
+Prerequisites
+Flutter SDK >= 3.0.0
+Dispositivo fisico con accelerometro
+Setup
+git clone <repository-url>
 cd dice_shake_app
 flutter pub get
 flutter run
-```
+Notes
+Lo shake detection non è supportato negli emulatori
+L'app è compatibile con Android e iOS
+Non sono richiesti permessi speciali per l'uso dell'accelerometro
+Possible Improvements
+Aggiunta di effetti sonori e vibrazione
+Supporto a più tipi di dadi (es. D12, D20)
+Esportazione della cronologia
+Miglioramenti UI/UX
+License
 
-## Requisiti
-
-- Flutter SDK >= 3.0.0
-- Dispositivo fisico con accelerometro (lo shake non funziona nell'emulatore)
-
-## Permessi Android
-
-L'app non richiede permessi speciali, l'accelerometro è accessibile di default.
-
-## Struttura del Codice
-
-```
-dice_shake_app/
-├── lib/
-│   └── main.dart          # Codice principale dell'app
-├── pubspec.yaml           # Dipendenze e configurazione
-└── README.md              # Questo file
-```
-
-## Personalizzazioni Possibili
-
-- Modificare `_shakeThreshold` per rendere lo shake più o meno sensibile
-- Cambiare `_shakeCooldownMs` per variare il tempo tra un lancio e l'altro
-- Aggiungere più dadi (modificare il selector)
-- Cambiare colori e stile dell'interfaccia
-
-## Note
-
-- Per testare l'app è necessario un dispositivo fisico
-- L'accelerometro negli emulatori non supporta lo shake detection
-- L'app è ottimizzata per funzionare su Android e iOS
-
-## Licenza
-
-Progetto didattico
+Questo progetto è stato realizzato a scopo didattico.
